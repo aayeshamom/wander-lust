@@ -11,12 +11,11 @@
       <div class="mb-3">
         <label for="description"class="form-label"></label>
       <textarea name="listing[description]" class="form-control">
-<%= listing.description %></textarea
-      >
+ <%= listing.description %> </textarea>
       </div>
       <div class="mb-3 ">
       <label for="Image"class="form-label"></label>
-      <input name="listing[image]" value="<%= listing.image %>" type="text" class="form-control"/>
+      <input name="listing[image]" value="<%= listing.image.url %>" type="text" class="form-control"/>
       </div>
       <div class="row">
       <div class="mb-3 col-md-4">
