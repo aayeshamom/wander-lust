@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-const { listingSchema } = require("./schema.js");
+const { listingSchema, reviewSchema } = require("./schema.js");
 const Review = require("./models/review.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wonderlust";
@@ -45,6 +45,16 @@ const validateListing = (req, res, next) => {
   }
 };
 
+
+const validateReview = (req, res, next) => {
+  let { error } = reviewSchema.validate(req.body);
+  if(error){
+    let errMsg = error.details.map((el) => el.message).join(",");
+    throw new expressError(400,errMsg);
+  }else {
+    next();
+  }
+};
 //Index Route
 app.get("/listings", wrapAsync(async (req, res) => {
   const allListings = await Listing.find({});
