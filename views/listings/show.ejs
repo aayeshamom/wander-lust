@@ -45,5 +45,12 @@
           </label>
         </div>
         <button class="btn btn-outline-dark">Submmit</button>
-      </form>
+     </form>
+     <hr>
+     <h4> All Reviews </h4>
+     <ul>
+       <% for(review of listing.reviews) {  %>
+      <li> <%= review.comment %>,<%= review.rating %> </li>
+      <% } %>
+     <ul>
  </div>
