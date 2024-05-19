@@ -32,27 +32,27 @@ router.post("/signup", wrapAsync(async(req,res)=>{
 router.get("/login", (req,res) => {
     res.render("users/login.ejs");
 });
- 
-router.post("/login",
+  
+ router.post(
+    "/login",
  saveRedirectUrl,
-passport.authenticate("local",{
-    failureRedirect : "/login",
-    failureFlash : true,
-}),
- async( req,res )=>{
-    req.flash("success","Welcome back again");
-    let redirectUrl = user.locals.redirect;
-    res.redirect(redirectUrl);
-}
+ passport.authenticate("local", {
+   failureRedirect : "/login",
+   failureFlash : true,
+ }),
+async (req,res) => {
+   req.flash("success","Welcome back again");
+   let redirectUrl = res.locals.redirectUrl;
+   res.redirect(redirectUrl);
+});
 
-);
  router.get("/logout",(req,res,next)=>{
     req.logout((err)=> {
         if(err){
            return next(err);
         }
         req.flash("success","you are logged out!");
-        res.redirect("listings");
+        res.redirect("/listings");
     });
  });
 

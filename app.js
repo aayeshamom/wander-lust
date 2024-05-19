@@ -40,7 +40,7 @@ app.use(methodOverride("_method"));
  const sessionOptions = {
   secret :"mySuperSecretCode",
   resave : false,
-  saveUnintialized :true,
+  saveinitialized : true,
   cookie :{
     expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     maxAge: 7 * 24 * 60 * 60 * 1000,
