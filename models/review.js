@@ -10,7 +10,11 @@ const reviewSchema = new Schema({
      },
      createdAt :{
         type :Date,
-        defalut :Date.now()
+        defalut :Date.now(),
+     },
+     author :{
+      type : Schema.Types.ObjectId,
+      ref : "User"
      }
 });
 
